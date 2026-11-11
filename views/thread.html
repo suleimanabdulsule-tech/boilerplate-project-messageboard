@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Anonymous Message Board</title>
@@ -46,14 +46,14 @@
               thread.push('<p class="id">id: '+ele._id+' ('+ele.created_on+')</p>');
               thread.push('<form id="reportThread"><input type="hidden" name="report_id" value="'+ele._id+'"><input type="submit" value="Report"></form>');
               thread.push('<form id="deleteThread"><input type="hidden" value="'+ele._id+'" name="thread_id" required=""><input type="text" placeholder="password" name="delete_password" required=""><input type="submit" value="Delete"></form>');
-              thread.push('<h3>'+ele.text+'</h3>');
+              thread.push('<h3>'+jQuery("<div>").text(ele.text).html()+'</h3>');
               thread.push('</div><div class="replies">');
               ele.replies.forEach(function(rep) {
                 thread.push('<div class="reply">')
                 thread.push('<p class="id">id: '+rep._id+' ('+rep.created_on+')</p>');
                 thread.push('<form id="reportReply"><input type="hidden" name="thread_id" value="'+ele._id+'"><input type="hidden" name="reply_id" value="'+rep._id+'"><input type="submit" value="Report"></form>');
                 thread.push('<form id="deleteReply"><input type="hidden" value="'+ele._id+'" name="thread_id" required=""><input type="hidden" value="'+rep._id+'" name="reply_id" required=""><input type="text" placeholder="password" name="delete_password" required=""><input type="submit" value="Delete"></form>');
-                thread.push('<p>'+rep.text+'</p>');
+                thread.push('<p>'+jQuery("<div>").text(rep.text).html()+'</p>');
                 thread.push('</div>')
               });
               thread.push('<div class="newReply">')
@@ -116,3 +116,4 @@
    </script>
   </body>
 </html>
+
